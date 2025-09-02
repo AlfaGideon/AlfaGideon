@@ -1,0 +1,18 @@
+{
+  "name": "russian-mentor-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot for Russian language learning platform",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsx bot/index.ts",
+    "dev": "tsx watch bot/index.ts"
+  },
+  "dependencies": {
+    "node-telegram-bot-api": "^0.64.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node-telegram-bot-api": "^0.64.0",
+    "tsx": "^4.6.2"
+  }
+}
