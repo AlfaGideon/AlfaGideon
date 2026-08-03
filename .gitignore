@@ -1,0 +1,9 @@
+
+# Flutter local/generated artifacts
+alfa_vpn/.dart_tool/
+alfa_vpn/.flutter-plugins
+alfa_vpn/.flutter-plugins-dependencies
+alfa_vpn/build/
+alfa_vpn/windows/flutter/ephemeral/
+alfa_vpn/macos/Flutter/ephemeral/
+alfa_vpn/linux/flutter/ephemeral/
