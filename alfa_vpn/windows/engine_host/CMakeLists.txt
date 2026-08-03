@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.20)
+project(alfa_vpn_host LANGUAGES CXX)
+add_executable(alfa-vpn-host main.cpp)
+target_compile_features(alfa-vpn-host PRIVATE cxx_std_17)
+target_compile_definitions(alfa-vpn-host PRIVATE UNICODE _UNICODE WIN32_LEAN_AND_MEAN)
+target_link_libraries(alfa-vpn-host PRIVATE advapi32)

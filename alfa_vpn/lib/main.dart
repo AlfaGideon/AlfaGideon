@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -31,8 +32,19 @@ class _HomeScreenState extends State<HomeScreen> {
   VpnProfile? _selected;
   VpnConnectionState _state = VpnConnectionState.disconnected;
   String? _message;
+  StreamSubscription<String>? _engineEvents;
 
-  @override void initState() { super.initState(); _load(); }
+  @override void initState() {
+    super.initState();
+    _engineEvents = _engine.events.listen((event) {
+      if (!mounted) return;
+      if (event.startsWith('error:') || event.startsWith('host-exit:')) {
+        setState(() { _state = VpnConnectionState.error; _message = event.replaceFirst('error: ', ''); });
+      }
+    });
+    _load();
+  }
+  @override void dispose() { _engineEvents?.cancel(); unawaited(_engine.dispose()); super.dispose(); }
   Future<void> _load() async {
     final profiles = await _repository.load();
     if (mounted) setState(() { _profiles = profiles; _selected = profiles.isEmpty ? null : profiles.first; });
